@@ -3,12 +3,12 @@ using Action = Domain.Enums.Action;
 
 namespace Domain.Entities
 {
-    internal class Booking : BaseEntity
+    public class Booking : BaseEntity
     {
         public DateTime PlacedAt { get; set; }
         public DateTime Start { get; set; }
         public DateTime End { get; set; }
-        private Status Status { get; set; }
+        private Status Status { get; set; } = Status.Created;
         public Status CurrentStatus => Status;
 
         public void ChangeState(Action action)
