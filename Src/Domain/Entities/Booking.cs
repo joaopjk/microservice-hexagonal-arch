@@ -1,4 +1,5 @@
 ﻿using Domain.Enums;
+using Action = Domain.Enums.Action;
 
 namespace Domain.Entities
 {
@@ -9,5 +10,18 @@ namespace Domain.Entities
         public DateTime End { get; set; }
         private Status Status { get; set; }
         public Status CurrentStatus => Status;
+
+        public void ChangeState(Action action)
+        {
+            Status = (Status, action) switch
+            {
+                (Status.Created, Action.Pay) => Status.Paid,
+                (Status.Created, Action.Cancel) => Status.Canceled,
+                (Status.Paid, Action.Finish) => Status.Finished,
+                (Status.Paid, Action.Refound) => Status.Refound,
+                (Status.Canceled, Action.Reopen) => Status.Created,
+                _ => Status
+            };
+        }
     }
 }
