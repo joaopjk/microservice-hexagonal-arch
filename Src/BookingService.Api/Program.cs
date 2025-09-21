@@ -1,15 +1,19 @@
+using Adapters.SQL;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddDbContext<HotelDbContext>(opt =>
+{
+    opt.UseSqlServer("Server=127.0.0.1,1433;Database=master;User Id=sa;Password=SuaSenhaForte123!;TrustServerCertificate=True;");
+});
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -23,3 +27,4 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+        
