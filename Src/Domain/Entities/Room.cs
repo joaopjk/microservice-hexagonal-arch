@@ -1,4 +1,6 @@
-﻿namespace Domain.Entities
+﻿using Domain.ValueObjects;
+
+namespace Domain.Entities
 {
     public class Room : BaseEntity
     {
@@ -7,5 +9,6 @@
         public bool InMaintenance { get; set; }
         public bool IsAvailable => !InMaintenance && !HasGuest;
         public bool HasGuest => true;
+        public Price Price { get; set; }
     }
 }
