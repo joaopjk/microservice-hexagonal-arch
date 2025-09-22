@@ -17,5 +17,13 @@ namespace Adapters.SQL.Repositories
 
             return guest.Id;
         }
+
+        public async Task<bool> Update(Guest guest)
+        {
+            hotelDbContext.Guests.Update(guest);
+            await hotelDbContext.SaveChangesAsync();
+
+            return true;
+        }
     }
 }

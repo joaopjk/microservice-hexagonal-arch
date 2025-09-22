@@ -1,7 +1,6 @@
 ﻿using Application.Dtos;
 using Application.Ports;
 using Application.Request;
-using Domain.Enums;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookingService.Api.Controllers
@@ -18,9 +17,7 @@ namespace BookingService.Api.Controllers
 
             if (result.Success) return Created("", result.Data);
 
-            if (result.ErrorCodes == ErrorCodes.CouldNotStoreData) return BadRequest(result);
-
-            return StatusCode(500, result);
+            return BadRequest(result);
         }
     }
 }

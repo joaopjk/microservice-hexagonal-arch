@@ -15,6 +15,7 @@ namespace Application.Dtos
         public static Guest MapToEntity(GuestDto dto)
         {
             if (dto == null) return null;
+
             return new Guest
             {
                 Id = dto.Id,

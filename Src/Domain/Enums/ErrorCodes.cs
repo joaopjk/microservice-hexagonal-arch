@@ -3,6 +3,8 @@
     public enum ErrorCodes
     {
         NotFound,
-        CouldNotStoreData
+        CouldNotStoreData,
+        InvalidDocumentId,
+        MissingRequiredInformation
     }
 }
