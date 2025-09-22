@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Adapters.SQL\Adapters.SQL.csproj" />
+    <ProjectReference Include="..\Application\Application.csproj" />
   </ItemGroup>
 
 </Project>

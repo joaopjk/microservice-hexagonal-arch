@@ -9,14 +9,12 @@ namespace Application.Services
 {
     public class GuestManager(IGuestRepository guestRepository) : IGuestManager
     {
-        private readonly IGuestRepository _guestRepository = guestRepository;
-
         public async Task<GuestResponse> CreateGuest(CreateGuestRequest request)
         {
             try
             {
                 var guest = GuestDto.MapToEntity(request.Data);
-                request.Data.Id = await _guestRepository.Create(guest);
+                request.Data.Id = await guestRepository.Create(guest);
 
                 return new GuestResponse
                 {
