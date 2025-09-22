@@ -14,7 +14,7 @@ namespace Adapters.SQL
                 .HasColumnName("DocumentNumber")
                 .IsRequired();
             builder.OwnsOne(x => x.DocumentId)
-                .Property(x => x.Type)
+                .Property(x => x.DocumentType)
                 .HasColumnName("DocumentType")
                 .IsRequired();
         }

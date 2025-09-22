@@ -125,7 +125,7 @@ namespace Adapters.SQL.Migrations
                                 .HasColumnType("nvarchar(max)")
                                 .HasColumnName("DocumentNumber");
 
-                            b1.Property<int>("Type")
+                            b1.Property<int>("DocumentType")
                                 .HasColumnType("int")
                                 .HasColumnName("DocumentType");
 
